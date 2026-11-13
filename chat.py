@@ -1,7 +1,8 @@
 from openai import OpenAI
+import os
 
 client = OpenAI(
-    base_url="http://localhost:11434/v1",
+    base_url=os.getenv("BASE_URL", "http://localhost:11434/v1"),
     api_key="ollama"
 )
 
@@ -15,6 +16,7 @@ print(f"Чат запущен.\n Модель: {MODEL_NAME}.\n Напишите 
 
 while True:
     user_input = input("Вы: ")
+    user_input = user_input.encode("utf-8", errors="ignore").decode("utf-8")
     if user_input.strip().lower() in ['выход', 'exit']:
         print("До свидания!")
         break
