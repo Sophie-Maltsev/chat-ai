@@ -1,0 +1,9 @@
+services:
+  ai-chat:
+    image: ai-chat
+    network_mode: "host"
+    environment:
+      - PYTHONIOENCODING=utf-8
+      - BASE_URL=http://localhost:11434/v1
+    stdin_open: true
+    tty: true
